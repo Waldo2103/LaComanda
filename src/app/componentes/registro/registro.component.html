@@ -1,0 +1,80 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet"></link>
+    <script src="//oss.maxcdn.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script-->
+
+    <title>Registrarse</title>
+</head>
+<body>
+
+        <div class="container">
+    <form id="loginForm" method="post" class="form-horizontal col-3" action="none" [formGroup]="loginForm">
+        <br>
+        <div class="form-group" align="center">
+                <img class="" src="../../../assets/icono.png" width="20%" height="20%" alt="">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input type="email" formControlName="email" class="form-control" name="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+
+        </div>
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div class="error" *ngIf="f.email.errors.required">El Email es obligatorio</div>
+                <div class="error" *ngIf="f.email.errors.email">Formato de Email inválido</div>
+
+            </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input type="password" formControlName="password" class="form-control" name="clave" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+
+        </div>
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div class="error" *ngIf="f.password.errors.required">La contraseña es obligatoria</div>
+                <div class="error" *ngIf="f.password.errors.minlength">Se requieren al menos 6 caracteres</div>
+            </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input type="password" formControlName="confirm" class="form-control" name="confirm" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+
+        </div>
+        <div *ngIf="submitted && f.confirm.errors" class="invalid-feedback">
+                <div class="error" *ngIf="f.confirm.value != f.password.value">La confirmación debe ser igual a la contraseña</div>
+                <div class="error" *ngIf="f.confirm.errors.minlength">Se requieren al menos 6 caracteres</div>
+            </div>
+            <br>
+        
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-camera"></i></span>
+            <input type="file" formControlName="foto" class="form-control" name="foto" id="foto" [ngClass]="{ 'is-invalid': submitted && f.foto.errors }"/>
+
+        </div>
+        <div *ngIf="submitted && f.foto.errors" class="invalid-feedback">
+            <div class="error" *ngIf="f.foto.errors.required">La foto es obligatoria</div>
+            
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="invalid" id="userInvalid" name="userInvalid" style="display:none" align="center">NO ES POSIBLE CONECTARSE</div>
+    </div>
+    <br>
+        <div class="form-group">
+            <div class="col-7" align="center">
+                <button (click)="OnSubmitRegister()" class="btn">Registrar</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+</body>
+</html>
+
